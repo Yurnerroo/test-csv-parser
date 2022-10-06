@@ -1,15 +1,12 @@
 import * as fs from "fs";
 import path from "path";
 
-async function asyncReadFile(filename: string){
+function readFile(filename: string){
     try {
         const filePath = path.resolve(__dirname, `../${ filename }`);
-        console.log(filePath)
-
-        const resultSync = await fs.readFileSync(filePath, "utf-8",);
-        console.log(resultSync);
-
-        return {resultSync};
+        const resultSync = fs.readFileSync(filePath, "utf-8",);
+        // console.log(resultSync);
+        return resultSync;
     } catch (err) {
         console.log(err);
         return "Something went wrong"
@@ -19,14 +16,24 @@ async function asyncReadFile(filename: string){
 
 // split data per line and comma
 
+const resp = readFile("./data.csv").split("\n");
+for (let i = 0; i < resp.length; i++) {
+  resp[i] = resp[i].replace("\\r", " ");
+  resp[i].split(",");
+}
+console.log(resp[0]);
 // store it in object
 
 // add data to DB
 
+// let qwe = {
+//   qwe: "213",
+//   asd: 123
+// }
 
-const run = async () => {
-    const resp = await asyncReadFile("./data.csv");
-    console.log(JSON.stringify(resp, null, 2))
-}
+// const run = async () => {
+//     const resp = readFile("./data.csv");
+//     console.log(JSON.stringify(resp, null, 2))
+// }
 
-run()
+// run()
