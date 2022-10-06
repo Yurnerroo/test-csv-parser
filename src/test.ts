@@ -16,6 +16,7 @@ async function asyncReadFile(filename: string){
     }
 }
 
+
 // split data per line and comma
 
 // store it in object
