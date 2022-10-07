@@ -1,4 +1,3 @@
-import { resolvePtr } from "dns";
 import * as fs from "fs";
 import path from "path";
 
@@ -16,7 +15,7 @@ function readFile(filename: string){
 
 
 function storeToArray(dataPath: string): Array<Array<string | number>> {
-    const resp = readFile(dataPath).split("\n");  // dataPath = "./data.csv"
+    const resp = readFile(dataPath).split("\n");
     let splitData: Array<Array<string>> = [];
 
     for (let i = 0; i < resp.length; i++) {
