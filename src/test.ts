@@ -1,3 +1,4 @@
+import { resolvePtr } from "dns";
 import * as fs from "fs";
 import path from "path";
 
@@ -13,15 +14,18 @@ function readFile(filename: string){
     }
 }
 
-
 // split data per line and comma
 
 const resp = readFile("./data.csv").split("\n");
+let splitData: Array<Array<string>> = [];
+
 for (let i = 0; i < resp.length; i++) {
-  resp[i] = resp[i].replace("\\r", " ");
-  resp[i].split(",");
+  resp[i] = resp[i].replace("\r", "");
+  splitData.push(resp[i].split(","));
 }
-console.log(resp[0]);
+
+console.log(splitData);
+
 // store it in object
 
 // add data to DB
