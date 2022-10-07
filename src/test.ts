@@ -18,7 +18,7 @@ function storeToArray(dataPath: string): Array<Array<string | number>> {
     const resp = readFile(dataPath).split("\n");
     let splitData: Array<Array<string>> = [];
 
-    for (let i = 0; i < resp.length; i++) {
+    for (let i = 1; i < resp.length; i++) {
     resp[i] = resp[i].replace("\r", "");
     splitData.push(resp[i].split(","));
     }
@@ -28,7 +28,7 @@ function storeToArray(dataPath: string): Array<Array<string | number>> {
 
 function addToDatabase(path: string, model: string): void {
     let data = storeToArray(path);
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
         // prisma.model.create(...data[i]);
     }
 }
